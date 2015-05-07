@@ -1,0 +1,290 @@
+\documentclass[a4paper]{mario01}
+
+% Check:
+% http://www.texample.net/tikz/examples/bayes/
+% http://tex.stackexchange.com/questions/6338/how-to-make-bend-lines-arrows-with-tikz
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\namesection{Mario}{Garc\'{i}a}  % Your name
+{ 
+%\urlstyle{same}\url{http://mayitzin.com} \\ % Website, LinkedIn profile
+Roboticist
+%\href{mailto:mario@mayitzin.com}{mario@mayitzin.com} %\\ +49-172-2121-544 % Contact info
+}
+
+%========================================================================================
+%	LEFT COLUMN
+%========================================================================================
+\begin{minipage}[t]{0.7\textwidth} % The right column takes up 64% of the text width of the page
+	%------------------------------------------------
+	% Experience
+	%------------------------------------------------
+	\section{Experience}
+		\runsubsection{VibeWrite UG}
+			\descript{| Head of Research}
+			\location{2013 - 2015 | Munich, Germany}
+			\vspace{\topsep} % Hacky fix for awkward extra vertical space
+			\begin{tightitemize}
+				\item Creation of a state-of-the-art embedded miniature tracking system.
+				\item Highly accurate trajectory reconstruction based on non-optical sensors for real-time applications.
+			\end{tightitemize}
+			
+			\sectionspace % Some whitespace after the section
+		
+		\runsubsection{Diehl Controls}
+			\descript{| Project Engineer}
+			\location{2008 - 2010 | Quer\'{e}taro, Mexico}
+			\begin{tightitemize}
+				\item Wrote, managed and maintained production specifications and manufacturing instructions for sub-assemblies of electronic boards.
+			\end{tightitemize}
+		
+			\sectionspace % Some whitespace after the section
+	%------------------------------------------------
+	% Education
+	%------------------------------------------------
+	\section{Education}
+		\subsection{Technische Universit\"{a}t M\"{u}nchen}
+			\descript{MSc. in Robotics, Cognition, Intelligence}
+			\location{2014 | Munich, Germany}
+			\begin{tightitemize}
+				\item Thesis: \textit{Robust Pose Estimation between Robotic Sensors with Gaussian Process Optimization} under supervision of \textbf{\href{http://vision.in.tum.de/members/triebel}{Dr Rudolph Triebel}} and \textbf{\href{http://userpage.fu-berlin.de/~tapia/}{Dr Ernesto Tapia}}.
+			\end{tightitemize}
+		
+		\sectionspace % Some whitespace after the section
+		
+		\subsection{Instituto Tecnol\'{o}gico de Quer\'{e}taro}
+			\descript{B.Eng. Mechatronics}
+			\location{2008 | Quer\'{e}taro, Mexico}
+			\begin{tightitemize}
+				\item A nine-semester Engineering Program focused on the development of advanced automation processes and original manufacturing techniques.
+				\item Thesis: \textit{A Novel Semi-automated Assembly for Domotic Electronic Boards} supervised by \textbf{\href{http://www.researchgate.net/profile/Raul_Lopez21}{Dr Raul Ramirez}}.
+			\end{tightitemize}
+			
+		\sectionspace % Some whitespace after the section
+	%------------------------------------------------
+	% Research
+	%------------------------------------------------
+	\section{Research}
+		\subsection{Instituto Tecnol\'{o}gico de Quer\'{e}taro}
+		\descript{National Minirobotics Championship}
+		\location{2008 | Quer\'{e}taro, Mexico}
+		Organized within a team of students the National Minirobotics Championship, which included the design, building and coordination of the competitions programs for the attending University teams.
+		
+		\sectionspace % Some whitespace after the section
+		
+		\subsection{Instituto Tecnol\'{o}gico de Quer\'{e}taro}
+		\descript{Aerozorros}
+		\location{2006 - 2007 | Quer\'{e}taro, Mexico}
+		Founder and Captain of the Aeronautics Team of the University. Represented the country in international competitions during two years.
+		
+		\sectionspace % Some whitespace after the section
+	%------------------------------------------------
+	% Awards
+	%------------------------------------------------
+	\section{Awards} 
+		\begin{tabular}{rlcl}
+			2007 & 1\textsuperscript{st} place in aeronautic prototyping & | & S\~{a}o Jos\'{e} Dos Campos (SAE Brazil)\\
+			2007 & 2\textsuperscript{nd} place in aeronautic design & | & Forth Worth, Texas (SAE USA)
+		\end{tabular}
+	
+		\sectionspace % Some whitespace after the section
+		\sectionspace % Some whitespace after the section
+	%------------------------------------------------
+	% Programming
+	%------------------------------------------------
+	\section{Programming}
+	\centering
+	\sectionspace % Some whitespace after the section
+	%----------- MATLAB -----------
+	\begin{tikzpicture}
+		\def\percent{15}
+	    % Draw gray area
+	    \draw[fill={lightgray!50},draw={lightgray!50}] (0,0) -- (\angle:\radius)
+	    	arc (\angle:\angle+\percent*3.6:\radius) -- cycle;
+	    % Draw blue area
+	    \draw[fill={lightblue!50},draw={lightblue!50}] (0,0) -- (\angle+\percent*3.6:\radius)
+	       	arc (\angle+\percent*3.6:\angle+360:\radius) -- cycle;
+	    % Draw the inner white circle
+	    \draw[fill={white},draw={white}] (0,0) -- (0:\inradius)
+	    arc (0:360:\inradius) -- cycle;
+	    % Put the inner logo
+	    \node[align=center]{ \includegraphics[width=\iconwidth]{images/matlab-logo.png} };
+	\end{tikzpicture}
+	%----------- PYTHON -----------
+	\begin{tikzpicture}
+		\def\percent{20}
+		% Draw gray area
+		\draw[fill={lightgray!50},draw={lightgray!50}] (0,0) -- (\angle:\radius)
+			arc (\angle:\angle+\percent*3.6:\radius) -- cycle;
+		% Draw blue area
+		\draw[fill={lightblue!50},draw={lightblue!50}] (0,0) -- (\angle+\percent*3.6:\radius)
+			arc (\angle+\percent*3.6:\angle+360:\radius) -- cycle;
+		% Draw the inner white circle
+		\draw[fill={white},draw={white}] (0,0) -- (0:\inradius)
+			arc (0:360:\inradius) -- cycle;
+		% Put the inner logo
+		\node[align=center]{ \includegraphics[width=\iconwidth]{images/Python-logo-notext.png} };
+	\end{tikzpicture}
+	%----------- C -----------
+	\begin{tikzpicture}
+		\def\percent{40}
+		% Draw gray area
+		\draw[fill={lightgray!50},draw={lightgray!50}] (0,0) -- (\angle:\radius)
+			arc (\angle:\angle+\percent*3.6:\radius) -- cycle;
+		% Draw blue area
+		\draw[fill={lightblue!50},draw={lightblue!50}] (0,0) -- (\angle+\percent*3.6:\radius)
+			arc (\angle+\percent*3.6:\angle+360:\radius) -- cycle;
+		% Draw the inner white circle
+		\draw[fill={white},draw={white}] (0,0) -- (0:\inradius)
+			arc (0:360:\inradius) -- cycle;
+		% Put the inner logo
+		\node[align=center]{ \includegraphics[width=\iconwidth]{images/C-logo.png} };
+	\end{tikzpicture}
+	%----------- C++ -----------
+	\begin{tikzpicture}
+		\def\percent{30}
+		% Draw gray area
+		\draw[fill={lightgray!50},draw={lightgray!50}] (0,0) -- (\angle:\radius)
+			arc (\angle:\angle+\percent*3.6:\radius) -- cycle;
+		% Draw blue area
+		\draw[fill={lightblue!50},draw={lightblue!50}] (0,0) -- (\angle+\percent*3.6:\radius)
+			arc (\angle+\percent*3.6:\angle+360:\radius) -- cycle;
+		% Draw the inner white circle
+		\draw[fill={white},draw={white}] (0,0) -- (0:\inradius)
+			arc (0:360:\inradius) -- cycle;
+		% Put the inner logo
+		\node[align=center]{ \includegraphics[width=\iconwidth]{images/cpplogo.png} };
+	\end{tikzpicture}
+	%----------- HTML5 -----------
+	\begin{tikzpicture}
+		\def\percent{50}
+		% Draw gray area
+		\draw[fill={lightgray!50},draw={lightgray!50}] (0,0) -- (\angle:\radius)
+			arc (\angle:\angle+\percent*3.6:\radius) -- cycle;
+		% Draw blue area
+		\draw[fill={lightblue!50},draw={lightblue!50}] (0,0) -- (\angle+\percent*3.6:\radius)
+			arc (\angle+\percent*3.6:\angle+360:\radius) -- cycle;
+		% Draw the inner white circle
+		\draw[fill={white},draw={white}] (0,0) -- (0:\inradius)
+			arc (0:360:\inradius) -- cycle;
+		% Put the inner logo
+		\node[align=center]{ \includegraphics[width=\iconwidth]{images/HTML5-logo.png} };
+	\end{tikzpicture}
+\end{minipage} % The end of the left column
+\hfill
+%========================================================================================
+%	RIGHT COLUMN
+%========================================================================================
+\begin{minipage}[t]{0.27\textwidth} % The left column takes up 35% of the text width of the page
+	\vspace{4pt} % Add space for picture
+	%------------------------------------------------
+	% Profile Photo
+	%------------------------------------------------
+%	\begin{tabular}{c}
+%	\includegraphics[trim=-1cm 0cm 0cm 10cm, clip, width=4cm, height=1cm]{images/Photo.png}
+%	\end{tabular}
+	\centering{
+	\includegraphics[trim=-1cm 0cm 0cm 9.5cm, clip, width=3.8cm, height=1cm]{images/Photo.png}
+	} \\
+	%------------------------------------------------
+	% Know-How
+	%------------------------------------------------
+	\raggedright
+	\section{Involvement}
+		\subsection{Academics}
+			\textbullet{} \pdftooltip{Robot Motion Planning}{And all about Robotics} \\
+			\textbullet{} \pdftooltip{Machine Vision}{Most of my interesting Thesis} \\
+			\textbullet{} \pdftooltip{Artificial Intelligence}{An exciting field worth exploring} \\
+			\textbullet{} \pdftooltip{Open Source Software}{Knowledge should be free} \\
+			\textbullet{} \pdftooltip{Advanced Machine Learning}{I cannot get tired of it} \\
+			\textbullet{} \pdftooltip{Scientific Computing}{Now experimenting with OpenMP} \\
+			\textbullet{} \pdftooltip{Cognitive Systems}{A never ending research adventure} \\
+			\textbullet{} \pdftooltip{Mechanical Design}{Taught me to put attention to details}
+		\sectionspace % Some whitespace after the section
+		
+		\subsection{Industry}
+			\textbullet{} \pdftooltip{Pattern Recognition}{Patterns are everywhere!} \\
+%			\textbullet{} \pdftooltip{Deep Learning}{And now deeper into CNNs} \\
+			\textbullet{} \pdftooltip{Tracking Algorithms}{If it is there, I will find it} \\
+			\textbullet{} \pdftooltip{Applied Numerical Optimization}{The secret of a good Tech Business} \\
+%			\textbullet{} \pdftooltip{Information Retrieval}{No need to re-invent the wheel} \\
+			\textbullet{} \pdftooltip{Navigation Systems}{KF, IMUs, Sensor Fusion and more} \\
+			\textbullet{} \pdftooltip{Advanced Manufacturing}{Automation and Process Planning} \\
+			\textbullet{} \pdftooltip{Technical Documentation}{I love to explain things} \\
+			\textbullet{} \pdftooltip{Data Visualization}{Small details, big changes} \\
+%			\textbullet{} \pdftooltip{MEMs for Localization}{And even how to build them} \\
+			\textbullet{} \pdftooltip{Human-Machine Interfaces}{Strongly working for this to run smoothly} \\
+%			\textbullet{} \pdftooltip{Unix Tools and Scripting}{The deeper we go, the better it runs}
+		\sectionspace % Some whitespace after the section
+	%------------------------------------------------
+	% Skills
+	%------------------------------------------------
+	\section{Skills}
+		\location{Languages}
+		\begin{tabular}{R{2cm} l}
+			\pdftooltip{Spanish}{Mother Tongue}      & \color{bullets}\CIRCLE\CIRCLE\CIRCLE\CIRCLE\pdftooltip{\CIRCLE}{Level: Chuck Norris} \color{primary}\\
+			\pdftooltip{English}{And speaking it every day}   & \color{bullets}\CIRCLE\CIRCLE\CIRCLE\CIRCLE\pdftooltip{\LEFTcircle}{Level: Philosopher} \color{primary}\\
+			\pdftooltip{German}{Language of Studies and friendships} & \color{bullets}\CIRCLE\CIRCLE\CIRCLE\CIRCLE\Circle \color{primary}\\
+%				Dutch      & \color{bullets}\CIRCLE\Circle\Circle\Circle\Circle \color{primary}\\
+		\end{tabular}\\
+		\vspace{3pt} % Some whitespace after the section
+		\location{Software Tools}
+		\begin{tabular}{R{2cm} l}
+			\pdftooltip{Matlab}{My favorite prototyping tool}     & \color{bullets2}\CIRCLE\CIRCLE\CIRCLE\CIRCLE\Circle \color{primary}\\
+			\pdftooltip{\LaTeX}{This CV is made with \LaTeXe}     & \color{bullets2}\CIRCLE\CIRCLE\CIRCLE\LEFTcircle\Circle \color{primary}\\
+			\pdftooltip{Git}{I like to track my evolution}        & \color{bullets2}\CIRCLE\CIRCLE\CIRCLE\Circle\Circle \color{primary}\\
+			\pdftooltip{OpenCV}{Always a new project to think about}     & \color{bullets2}\CIRCLE\CIRCLE\CIRCLE\LEFTcircle\Circle \color{primary}\\
+			\pdftooltip{Blender}{My way to challenge Creativity}    & \color{bullets2}\CIRCLE\CIRCLE\LEFTcircle\Circle\Circle \color{primary}\\
+			\pdftooltip{SAP}{The organizational core of huge companies}        & \color{bullets2}\CIRCLE\CIRCLE\Circle\Circle\Circle \color{primary}\\
+			\pdftooltip{SolidWorks}{THE reference for mechanical 3D design} & \color{bullets2}\CIRCLE\CIRCLE\LEFTcircle\Circle\Circle \color{primary}\\
+			\pdftooltip{ROS}{Always glad to play with it!}        & \color{bullets2}\CIRCLE\CIRCLE\CIRCLE\Circle\Circle \color{primary}\\
+			\pdftooltip{Qt}{The nicest GUI creator}        &
+			\color{bullets2}\CIRCLE\CIRCLE\LEFTcircle\Circle\Circle \color{primary}
+		\end{tabular}\\
+		
+		\sectionspace % Some whitespace after the section
+	%------------------------------------------------
+	% Links
+	%------------------------------------------------
+	\section{Stalk me in} 
+		Github:// \href{https://github.com/Mayitzin}{\bf mayitzin} \\
+		LinkedIn:// \href{https://www.linkedin.com/in/mariogarciacruz}{\bf MarioGarciaCruz} \\
+		\begin{tikzpicture}
+			\fontsize{15pt}{15pt}
+			\node at (0,0) (name) {mario@mayitzin.com};
+			% Insert icons
+			\node at (0.1,-0.6) (link) {{\includegraphics[width=18pt]{images/twitter-logo.png}}};
+			\node at (0.6,0.6) (link) {{\includegraphics[width=16pt]{images/wordpress-logo.png}}};
+			\node at (-0.15,-1.2) (link) {{\includegraphics[width=15pt]{images/email-icon2.png}}};
+			% Insert connectors
+			\draw[-,color=tweetblue,line width=0.7mm] (-0.15,-0.6) to[out=180,in=270] (-0.95,-0.25);
+			\draw[-,color=tweetblue,line width=0.7mm] (0.35,-0.6) to[out=0,in=270] (1.25,-0.2);
+			\draw[-,color=wordgray,line width=0.7mm]  (0.32,0.6) to[out=180,in=90]   (-0.6,0.25);
+			\draw[-,color=wordgray,line width=0.7mm]  (0.88,0.6) to[out=0,in=90]   (2.3,0.2);
+			\draw[-,color=black,line width=0.7mm] (-0.4,-1.2) to[out=180,in=270] (-2.3,-0.2);
+			\draw[-,color=black,line width=0.7mm] (0.1,-1.2) to[out=0,in=270] (2.3,-0.2);
+		\end{tikzpicture}
+%		\sectionspace % Some whitespace after the section
+	
+	\section{Hobbies} 
+		\begin{tabular}{c c c c}
+			\pdftooltip{\includegraphics[width=22pt]{images/guitar20.png}}{A tireless Blues guitarist since kid} & 
+			\pdftooltip{\includegraphics[width=22pt]{images/boxgloves.png}}{Muay Thai is the way to clear my mind} & 
+			\pdftooltip{\includegraphics[width=22pt]{images/book135.png}}{Occasionally writing for a cultural/political magazine in Mexico} & 
+			\pdftooltip{\includegraphics[width=22pt]{images/pass3.png}}{Constantly trying to find the limits of the planet} \\ 
+			& & & \\
+			\pdftooltip{\includegraphics[width=22pt]{images/cinema3.png}}{At least once a week in the cinema} &
+			\pdftooltip{\includegraphics[width=22pt]{images/chichen1.png}}{History is my means of enrichment...} &
+			\pdftooltip{\includegraphics[width=16pt]{images/book139.png}}{... and my biggest treasure are my books}
+		\end{tabular}
+		\sectionspace % Some whitespace after the section
+		
+\end{minipage} % The end of the left column
+%----------------------------------------------------------------------------------------
+
+\end{document}

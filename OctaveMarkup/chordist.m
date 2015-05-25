@@ -13,7 +13,6 @@
 %       2014.06.27. First implementation.
 %
 %   @author: Mario Garcia.
-%   VibeWrite(c)
 
 function d = chordist(X1,X2)
 

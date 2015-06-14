@@ -69,9 +69,12 @@ def get_bl(txt_ls):
 	return txt_bl
 
 
-def print_code(txt_bl):
-	print('\n'.join([''.join(['{:2}'.format(item) for item in row]) 
-    	  for row in txt_bl]))
+def print_code(text, txt_bl):
+	for row in txt_bl:
+		line = []
+		for item in row: line.append(item)
+		print ' '.join(line)
+	print ' '+'   '.join(list(text))
 
 
 if __name__ == "__main__":
@@ -80,8 +83,7 @@ if __name__ == "__main__":
 	text = "mayitzin did this"
 	if len(sys.argv) > 1:
 		text = str(sys.argv[1])
-	txt_ls = list(text)
-	txt_bl = get_bl(txt_ls)
 
-	print text, ":"
-	print_code(txt_bl)
+	txt_bl = get_bl(list(text))
+
+	print_code(text, txt_bl)

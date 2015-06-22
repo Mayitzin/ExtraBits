@@ -5,6 +5,7 @@ normal text.
 History:
 	11.06.2015. First implementation.
 	12.06.2015. Complete alphabet added.
+	22.06.2015. Uppercase letters added.
 
 @author: Mario Garcia
 www.mayitzin.com
@@ -30,6 +31,7 @@ def build_code(c):
 	n9 = np.array([['.','O'],['O','.']])
 	n0 = np.array([['.','O'],['O','O']])
 	ns = np.array([[' ',' '],[' ',' '],[' ',' ']])
+	cp = np.array([['.','.'],['.','.'],['.','O']])
 	# Table of Braille Code made of particles from above
 	codes = {
 	'a' : np.vstack((n1,x1)),
@@ -59,7 +61,10 @@ def build_code(c):
 	'z' : np.vstack((n5,x4)),
 	' ' : ns
 	}
-	return codes[c]
+	if c.islower() or c.isspace():
+		return codes[c]
+	elif c.isupper():
+		return np.hstack((cp,codes[c.lower()]))
 
 
 def get_bl(txt_ls):
@@ -72,9 +77,10 @@ def get_bl(txt_ls):
 def print_code(text, txt_bl):
 	for row in txt_bl:
 		line = []
-		for item in row: line.append(item)
+		for item in row:
+			line.append(item)
 		print ' '.join(line)
-	print ' '+'   '.join(list(text))
+	# print ' '+'   '.join(list(text))
 
 
 if __name__ == "__main__":
@@ -85,5 +91,4 @@ if __name__ == "__main__":
 		text = str(sys.argv[1])
 
 	txt_bl = get_bl(list(text))
-
 	print_code(text, txt_bl)

@@ -18,11 +18,13 @@ This project is to build an OCR for Fraktur typefaces.
 
 ## Books and Articles
 
-* M. Cheriet, N. Kharma, C. Liu and C. Suen. _Character Recognition Systems: A Guide for Students and Practitioners_. John Wiley & Sons. 2007.
-* H. Bunke and P.S.P. Wang. _Handbook of Character Recognition and Document Image Analysis_. World Scientific Pub Co Inc. 1997.
-* S.V. Rice, G. Nagy and T.A. Nartker. _Optical Character Recognition: An Illustrated Guide to the Frontier (The Springer International Series in Engineering and Computer Science)_. Springer. 1999.
-* C. Steger, M. Ulrich and C. Wiedemann. _MAchine Vision: Algorithms and Applications_. Wiley-VCH. 2007.
+* **Book**: M. Cheriet, N. Kharma, C. Liu and C. Suen. _Character Recognition Systems: A Guide for Students and Practitioners_. John Wiley & Sons. 2007.
+* **Book**: H. Bunke and P.S.P. Wang. _Handbook of Character Recognition and Document Image Analysis_. World Scientific Pub Co Inc. 1997.
+* **Book**: S.V. Rice, G. Nagy and T.A. Nartker. _Optical Character Recognition: An Illustrated Guide to the Frontier (The Springer International Series in Engineering and Computer Science)_. Springer. 1999.
+* **Book**: C. Steger, M. Ulrich and C. Wiedemann. _MAchine Vision: Algorithms and Applications_. Wiley-VCH. 2007.
 * J. Gllavata, R. Ewerth and B. Freisleben. [_A Robust Algorithm for Text Detection in Images_](http://saigo.googlecode.com/svn/trunk/papers/artigos1/globalthr.pdf). Proceedings of the 3rd International Symposium on Image and Signal Processing and Analysis 2003. Volume 2. Pages 611-616.
-* W. Huang., Z. Lin, J. Yang, and J. Wang. _[Text Localization in Natural Images using Stroke Feature Transform and Text Covariance Descriptors](http://www.wlhuang.com/papers/whuang2013_iccv.pdf)_. IEEE International Conference on Computer Vision (ICCV), 2013.
+* W. Huang., Z. Lin, J. Yang, and J. Wang. [_Text Localization in Natural Images using Stroke Feature Transform and Text Covariance Descriptors_](http://www.wlhuang.com/papers/whuang2013_iccv.pdf)_. IEEE International Conference on Computer Vision (ICCV), 2013.
 * L. Kang, Y. Li and D. Doermann. [_Orientation Robust Text Line Detection in Natural Images_](http://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Kang_Orientation_Robust_Text_2014_CVPR_paper.pdf). CVPR2014.
 * F. Mohammad, J. Anarase, M. Shingote and P. Ghanwat. [_Optical Character Recognition Implementation Using Pattern Matching_](http://www.ijcsit.com/docs/Volume%205/vol5issue02/ijcsit20140502254.pdf). International Journal of Computer Science and Information Technologies. Volume 5 (2). pages 2088-2090. 2014.
+* O.D Trier, A.K. Jain and T. Taxt. [_Feature Extraction Methods for Character Recognition - A Survey_](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.7439&rep=rep1&type=pdf). Patter Recognition. Volume 29. Issue 4. Pages 641-662. April 1996.
+* R. Lienhart and A. Wernicke. [_Localizing and Segmenting Text in Images and Videos_](http://www.lienhart.de/Prof._Dr._Rainer_Lienhart/Publications_files/lienhart-csvt2002.pdf). IEEE Transactions on Circuits and Systems for Video Technology. Volume 12. Issue 4. April 2002.

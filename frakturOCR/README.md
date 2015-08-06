@@ -11,8 +11,8 @@ This project is to build an OCR for Fraktur typefaces.
 1. Read Image in gray-scale. If not in gray-scale then [transform it to gray-scale](https://en.wikipedia.org/wiki/Grayscale#Converting_color_to_grayscale) in terms of the CIE 1931.
 2. Identify Orientation. The direction of the lines with text must be aligned with the horizontal Axis of the image. Probably a binarization of the image is needed here to create a histogram.
 3. Rectify Image with an [affine Transformation](http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/warp_affine/warp_affine.html), or [projective transformation](http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/BEARDSLEY/node3.html) for severe cases.
-4. Bilinear Interpolation (to avoid losing detail) with a Gaussian smoothing if needed.
-5. Binarization of the image.
+4. [Bilinear Interpolation](https://en.wikipedia.org/wiki/Bilinear_interpolation) (to avoid losing detail) with a Gaussian smoothing if needed.
+5. [Binarization](http://www.leptonica.com/binarization.html) of the image.
 6. Vertical dilation to join dots of 'i' and 'j', and umlauts.
 7. Segmentation of each character.
   * Width is not constant.
@@ -53,6 +53,9 @@ This project is to build an OCR for Fraktur typefaces.
 * [Automatically Detect and Recognize Text in Natural Images](http://de.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.html). An example using MATLAB to detect regions containing text in an image.
 * [Neural Network OCR](http://www.codeproject.com/Articles/11285/Neural-Network-OCR). Some ideas about optical character recognition using neural networks presented in an article by Andrew Kirillow. 2005.
 * [CNNs for handwritten and machine-printed character recognition](http://yann.lecun.com/exdb/lenet/). An example of Convolutional Neural Networks designed to recognize visual patterns directly from pixel images with minimal preprocessing.
+* [Coding Bilinear Interpolation](http://supercomputingblog.com/graphics/coding-bilinear-interpolation/). A short explanation and the code for a Bilinear Interpolation by The Supercomputing Blog.
+* [Fast C++: Bilinear Pixel Interpolation using SSE](http://fastcpp.blogspot.de/2011/06/bilinear-pixel-interpolation-using-sse.html). Explanation and code for a fast Bilinear interpolation implemented in C++.
+* [OpenCV Tutorials](http://docs.opencv.org/master/d9/df8/tutorial_root.html#gsc.tab=0). Set of basic OpenCV tutorials.
 
 ## Books and Articles
 

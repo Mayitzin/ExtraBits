@@ -40,22 +40,24 @@ Idi2 = ~imdilate(~Ibw2,se2);
 Ics2 = regionprops(~Idi2,'centroid');
 cs2 = cat(1, Ics2.Centroid);
 
-% Histograms
-x = sum(Ibw2,2);
-% figure()
-% hist(cs2(:,2),n);
+% Pseudo-Histograms
+x = sum(~Ibw2,2);
+y = zeros(m);
+for i = 1:m
+    y(i) = sum(find(round(cs2(:,2))==i));
+end
 
 % Plotting Images
 figure()
 subplot(1,4,1)
-imshow(Ibw2);
+    imshow(I);
 subplot(1,4,2)
-imshow(Idi2); hold on
-plot(cs2(:,1),cs2(:,2), 'r*'); hold off
+    imshow(Idi2); hold on
+    plot(cs2(:,1),cs2(:,2), 'r*'); hold off
 subplot(1,4,3) % Histogram of Pixels
-hist(x, m);
-% hist(gca, x, m);
-% set(gca,'view',[90 90])
+    plot(gca, 1:m,x, 'r-')
+    set(gca,'view',[90 90])
 subplot(1,4,4) % Histogram of Points
-hist(gca, cs2(:,2), m);
-set(gca,'view',[90 90])
+    plot(gca, 1:m,y, 'r-')
+    set(gca,'view',[90 90])
+

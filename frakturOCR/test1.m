@@ -36,6 +36,10 @@ Ibw2 = im2bw(J2,t/256);
 se2 = strel('square',5);
 Idi2 = ~imdilate(~Ibw2,se2);
 
+% Closed Image
+se3 = strel('square',5);
+Idi3= ~imclose(~Ibw2,se3);
+
 % Centroids
 Ics2 = regionprops(~Idi2,'centroid');
 cs2 = cat(1, Ics2.Centroid);
@@ -55,13 +59,15 @@ figure()
 subplot(1,4,1)
     imshow(I); hold on
     plot(cs2(:,1),cs2(:,2), 'r*'); hold off
-subplot(1,4,2) % Histogram of Pixels
-    plot(gca, 1:m,x, 'r-')
-    set(gca,'view',[90 90])
-subplot(1,4,3) % Histogram of Points
-    plot(gca, 1:m,y, 'r-')
-    set(gca,'view',[90 90])
-subplot(1,4,4)
+%subplot(1,4,2) % Histogram of Pixels
+%    plot(gca, 1:m,x, 'r-')
+%    set(gca,'view',[90 90])
+%subplot(1,4,3) % Histogram of Points
+%    plot(gca, 1:m,y, 'r-')
+%    set(gca,'view',[90 90])
+subplot(1,4,2)
+  imshow(Idi3)
+subplot(1,4,3)
     plot(gca, 1:m,z, 'r-')
     set(gca,'view',[90 90])
 

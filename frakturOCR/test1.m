@@ -11,34 +11,35 @@
 % @author: Mario Garcia
 % www.mayitzin.com
 
-clear all
+% clear all
+% 
+% disp('Starting test')
+% 
+% I = imread('page001.png');
+% I = rgb2gray(I);
+% [m, n] = size(I);
+% 
+% % Sharpening Filters
+% f1 = fspecial('unsharp', 0.1);
+% f2 = fspecial('unsharp', 0.9);
+% 
+% % Sharped Images
+% J1 = imfilter(I,f1);
+% J2 = imfilter(I,f2);
+% 
+% % Binarized Images
+% t = 220;
+% Ibw1 = im2bw(J1,t/256);
+% Ibw2 = im2bw(J2,t/256);
 
-disp('Starting test')
-
-I = imread('page001.png');
-I = rgb2gray(I);
-[m, n] = size(I);
-
-% Sharpening Filters
-f1 = fspecial('unsharp', 0.1);
-f2 = fspecial('unsharp', 0.9);
-
-% Sharped Images
-J1 = imfilter(I,f1);
-J2 = imfilter(I,f2);
-
-% Binarized Images
-t = 220;
-Ibw1 = im2bw(J1,t/256);
-Ibw2 = im2bw(J2,t/256);
-
-% Dilate image vertically
+% Dilate image
 se2 = strel('square',5);
 Idi2 = ~imdilate(~Ibw2,se2);
 
-% Closed Image
+% Close Image
 se3 = strel('square',5);
 Idi3= ~imclose(~Ibw2,se3);
+Idi3 = ~bwconvhull(~Idi3, 'objects');
 
 % Centroids
 Ics2 = regionprops(~Idi2,'centroid');
@@ -51,6 +52,7 @@ for i = 1:m
     y(i) = sum(round(cs2(:,2))==i);
 end
 z = x.*y;
+w = sum(~Idi3,2);
 
 % Plotting Images
 figure()
@@ -66,8 +68,11 @@ subplot(1,4,1)
 %    plot(gca, 1:m,y, 'r-')
 %    set(gca,'view',[90 90])
 subplot(1,4,2)
-  imshow(Idi3)
+    imshow(Idi3)
 subplot(1,4,3)
     plot(gca, 1:m,z, 'r-')
+    set(gca,'view',[90 90])
+subplot(1,4,4)
+    plot(gca, 1:m,w, 'r-')
     set(gca,'view',[90 90])
 

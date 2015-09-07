@@ -39,7 +39,7 @@ Idi2 = ~imdilate(~Ibw2,se2);
 % Close Image
 se3 = strel('square',5);
 Idi3= ~imclose(~Ibw2,se3);
-Idi3 = ~bwconvhull(~Idi3, 'objects');
+%Idi3 = ~bwconvhull(~Idi3, 'objects');
 
 % Centroids
 Ics2 = regionprops(~Idi2,'centroid');
@@ -68,7 +68,7 @@ subplot(1,4,1)
 %    plot(gca, 1:m,y, 'r-')
 %    set(gca,'view',[90 90])
 subplot(1,4,2)
-    imshow(Ics2)
+    imshow(Idi3)
 subplot(1,4,3)
     plot(gca, 1:m,z, 'r-')
     set(gca,'view',[90 90])

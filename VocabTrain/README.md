@@ -2,7 +2,7 @@
 
 This project is targeted to build a Vocabulary Trainer similar to the flip cards, but with some enhancements to make it more effective.
 
-# Desired Characteristics
+## Desired Characteristics
 
 * Easy, simple and clean use (minimalistic).
 * Multi-platform.
@@ -13,12 +13,14 @@ This project is targeted to build a Vocabulary Trainer similar to the flip cards
 * Easily customizable.
 * Portable. NOT Java.
 
-# Overview
+## Overview
 
 1. Easy to access database.
+  * CSV or Json?
+  * MySQL?
 2. Online and Offline training.
 3. Customizable entries. User sets the vocabulary.
 
-# References
+## References
 
 * None yet.

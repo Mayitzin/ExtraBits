@@ -34,11 +34,15 @@ int main(int argc, char *argv[]){
     }
     // // Print the elements
     printMatrixElems(m_ptr);
-    // m_ptr = &matrix[0][0];
     printMatrix(m_ptr);
+    m_ptr = &matrix[0][0];
+    // New matrix
+    printf("Creating new matrix\n");
     int *tm;
     tm = transpose(m_ptr);
     printf("The new matrix is in 0x%p\n", tm);
+    printMatrixElems(tm);
+    printMatrix(tm);
 
     return (0);
 }
@@ -46,6 +50,14 @@ int main(int argc, char *argv[]){
 int * transpose(int *matrix){
     int new_matrix[dim_x][dim_y];
     int *newm_ptr;
+    // Set values for each element
+    int i, j;
+    for(i=0; i<dim_y; ++i){
+        for(j=0; j<dim_x; ++j){
+            new_matrix[j][i] = *(matrix+i+j);
+            // ++matrix;
+        }
+    }
     newm_ptr = &new_matrix[0][0];
     return (newm_ptr);
 }

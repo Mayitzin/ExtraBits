@@ -8,7 +8,7 @@ History:
 www.mayitzin.com
 """
 
-f = open('dlt.m', 'r')
+f = open('rotation.m', 'r')
 t = open('test.txt', 'w')
 for line in f:
     l = line[0:-1]

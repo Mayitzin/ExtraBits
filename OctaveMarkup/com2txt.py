@@ -8,14 +8,12 @@ History:
 www.mayitzin.com
 """
 
-f = open('rotation.m', 'r')
-t = open('test.txt', 'w')
-for line in f:
-    l = line[0:-1]
-    try:
-        t.write( l[l.index('%')+1:]+"\n" )
-    except:
-        pass
+with open('rotation.m', 'r') as inputFile:
+    text = inputFile.readlines()
 
-t.close()
-f.close()
+m = len(text)
+
+for i in range(m):
+	if text[i][0] == "%": print text[i]
+
+print "Finished"

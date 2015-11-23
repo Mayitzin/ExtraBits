@@ -14,6 +14,8 @@ with open('rotation.m', 'r') as inputFile:
 m = len(text)
 
 for i in range(m):
-	if text[i][0] == "%": print text[i]
+	if text[i][0] == "%":
+		ttype = "block"
+		print text[i]
 
 print "Finished"

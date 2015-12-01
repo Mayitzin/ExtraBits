@@ -16,6 +16,6 @@ m = len(text)
 for i in range(m):
 	if text[i][0] == "%":
 		ttype = "block"
-		print text[i]
+		print i, ":", len(text[i]), ":", text[i][:-1]
 
 print "Finished"

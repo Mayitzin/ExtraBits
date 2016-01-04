@@ -7,7 +7,7 @@
 
 float r1, r2, rt;
 
-float totalR(float r1, float r2);
+float totalR(float array[]);
 
 int main(int argc, char *argv[]){
     int numElems = argc-1;
@@ -22,28 +22,40 @@ int main(int argc, char *argv[]){
 
     // Print all elements
     int i;
-    float * vals = malloc(numElems * sizeof(float));
+    float vals[numElems];
+    int n = sizeof(vals) / sizeof(vals[0]);
+    printf("Size of array: %d\n", n);
     for (i=0; i<numElems; ++i){
-        // printf("%s\n", argv[i+1]);
         vals[i] = atof(argv[i+1]);
-        printf("R%d :\t%2.3f\n", i, vals[i]);
+        printf("R_%d = %2.3f\n", i, vals[i]);
     }
 
     // Compute total Resistance
-    rt = totalR(r1, r2);
+    printf("Number of elements: %d\n", sizeof(vals)/sizeof(vals[0]));
+    // float * v = &vals[0];
+    rt = totalR(vals);
 
     // Print result
     printf("Resistencia Total: %f\n", rt);
-
-    // Free memory
-    free(vals);
 
     return (0);
 }
 
 
-float totalR(float r1, float r2){
-    float rt;
-    rt = 1.0f / ((1.0f/r1) + (1.0f/r2));
-    return rt;
+// float totalR(float r1, float r2){
+//     float rt;
+//     rt = 1.0f / ((1.0f/r1) + (1.0f/r2));
+//     return rt;
+// }
+
+
+float totalR(float array[]){
+    int i;
+    int len = sizeof(array);
+    // int len = sizeof(array) / sizeof(array[0]);
+    printf("Number of elements: %d\n", len);
+    // for (i=0; i<len; ++i){
+    //     printf("R_%d = %2.3f\n", i, array[i]);
+    // }
+    return len;
 }

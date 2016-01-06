@@ -8,20 +8,25 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <math.h>
 
 int main(int argc, char *argv[]){
-    int num = atoi(argv[1]);
-    int nDigits;
+    int len = strlen(argv[1]);
+    char root[len];
 
-    if (num==0){
-        nDigits = 1;
-    } else {
-        nDigits = floor(log10(abs(num))) + 1;
+    strcpy(root, argv[1]);
+
+    // NOTE: The following lines count the digits of an integer
+    // int nDigits, num = atoi(argv[1]);
+    // if (num==0){ nDigits = 1; }
+    // else { nDigits = floor(log10(abs(num))) + 1; }
+
+    int i, digits[len];
+    for (i=0; i<len; ++i) {
+        digits[i] = root[i]-'0';
+        printf("%d\n", digits[i]);
     }
-
-    printf("%d\n", num);
-    printf("%d\n", nDigits);
 
     return (0);
 }

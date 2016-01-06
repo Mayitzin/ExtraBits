@@ -9,10 +9,9 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 
 int main(int argc, char *argv[]){
-    // NOTE: The following lines count the digits of an integer
+    // NOTE: The following lines count the digits of an integer (needs math.h)
     // int nDigits, num = atoi(argv[1]);
     // if (num==0){ nDigits = 1; }
     // else { nDigits = floor(log10(abs(num))) + 1; }

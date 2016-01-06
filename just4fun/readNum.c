@@ -1,7 +1,7 @@
-/*
- * Read Numbers
+/**
+ * Write Numbers
  *
- * @brief A program that writes down the pronuntiation of each number
+ * @brief A program that writes the pronuntiation of each number
  *
  * @author Mario Garcia
  * www.mayitzin.com
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
 
     int i, digits[len];
     for (i=0; i<len; ++i) {
-        digits[i] = root[i]-'0';
+        digits[i] = root[i]-'0';    // This converts a character into an integer
         printf("%d : ", digits[i]);
         switch(root[i]) {
             case '0':

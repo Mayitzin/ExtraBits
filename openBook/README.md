@@ -1,10 +1,8 @@
 # Open Book
 
-## English Description
-
 Descripción en Español al final
 
----
+## English
 
 This is an experiment that intends to create an open Book, with the information found online, and about a simple topic.
 
@@ -13,6 +11,8 @@ As my mother tongue is Spanish, such book will be created in that language.
 For any technical enquiry or something to do with the managmente of the project English can be used.
 
 The format used to write this book is TeX. It allows for a nice handling and distribution of this type of document.
+
+The topic is **A narrative history of Freemasonry in Mexico**, which is highly interesting for me and I consider it relevant to understand many parts of the Mexican history.
 
 Suggestions and comments are always welcome.
 

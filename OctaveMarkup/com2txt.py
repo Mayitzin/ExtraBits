@@ -24,12 +24,11 @@ for i in range(m):
 		lines.append(text[i])
 		ttype = "block"
 		print i, nltk.word_tokenize(text[i])
-		# print i, ":", len(text[i]), ":", text[i][:-1]
 
-print nltk.word_tokenize(lines[0])
-print fileName[:-2].upper()
+tokens = nltk.word_tokenize(lines[0])
+title = tokens[1]
 
-if nltk.word_tokenize(lines[1])==fileName[:-2].upper():
-	print "the title of the function is", fileName[:-2]
+if title==fileName[:-2].upper():
+	print "the title of the function is", title
 else:
 	print "The name of the file does not correspond to the title"

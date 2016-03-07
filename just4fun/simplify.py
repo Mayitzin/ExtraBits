@@ -34,6 +34,28 @@ def replaceConst(equation):
     equation = equation.replace("dt^","dt")
     return equation
 
+def getTerms(particles):
+    repeated, unique = [], []
+    for keys, values in particles.iteritems():
+        if values>1: repeated.append(keys)
+    # print "Repeated elements are:"
+    # for elems in repeated: print str(particles[elems])+"x : ", elems
+    for i in range(len(repeated)):
+        elem = repeated[i]
+        for j in repeated:
+            if elem in j and(elem is not j): unique.append(elem)
+    if len(unique)>0:
+        print "Unique elements are:"
+        for elems in unique: print elems
+    else:
+        print "\nThere are no unique elements"
+        unique = repeated
+
+def getVariables(elements):
+    atoms = re.split(r'[ +-]', element[1:-1])
+    atoms = [x for x in atoms if x]
+    return atoms
+
 
 # Default File
 fileName = None
@@ -51,9 +73,3 @@ print equation
 particles, positions = getParticles(equation)
 
 
-repeated = []
-for keys, values in particles.iteritems():
-    if values>1: repeated.append(keys)
-
-print "Repeated elements are:"
-for elems in repeated: print str(particles[elems])+"x : ", elems

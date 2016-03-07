@@ -35,3 +35,9 @@ def replaceConst(dummy):
     return dummy
 
 
+# Default File
+fileName = None
+# Get the Input File (if given)
+if len(sys.argv) >= 2:
+    if isFile(sys.argv[1]): fileName = sys.argv[1]
+    else: print fileName, "is NOT a valid input File"

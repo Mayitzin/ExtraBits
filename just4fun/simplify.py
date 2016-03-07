@@ -8,3 +8,9 @@ www.mayitzin.com
 
 import sys
 import re
+
+
+def isFile(inputFile):
+    validFiles = [".csv", ".txt"]
+    if inputFile[-4:] in validFiles: return True
+    else: return False

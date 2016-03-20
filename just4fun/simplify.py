@@ -48,8 +48,6 @@ def getTerms(particles, debug=False):
             for elems in unique: print elems
         else: pass
     else:
-        if debug: print "\nThere are no unique elements"
-        else: pass
         unique = repeated
     return unique, repeated
 
@@ -71,6 +69,22 @@ def buildVars(terms):
         var_list.append(newterm)
     return var_list
 
+def simplify(equation, debug=False):
+    # Remove repeated constants
+    equation = replaceConst(equation)
+    # Get each individual term of the equation
+    particles, positions = getParticles(equation)
+    # Get unique terms
+    terms, repeated = getTerms(particles)
+    # Build Variable names for each unique term
+    varl = buildVars(repeated)
+    if debug:
+        for i in range(len(varl)): print "  "+str(equation.count(repeated[i]))+"x ",varl[i],"  :\t",repeated[i]
+    # Substitute elements in new equation
+    new_equation = equation
+    for i in range(len(varl)):
+        new_equation = new_equation.replace(repeated[i],varl[i])
+    return new_equation
 
 # Default File
 fileName = None
@@ -80,25 +94,16 @@ if len(sys.argv) >= 2:
     else: print fileName, "is NOT a valid input File"
 
 # Used Equation
-# equation = "(-(x6 - z0)*((P66*dt + Q36)*(P33*dt + P66*dt*hdt + Q03) - (P66*hdt + Q06)*(P33 + P66*dt**2 + Q33 + R99)) + ((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))*(dt*x3 + hdt*x6 + x0) - ((P66*dt + Q63)*(P66*hdt + Q06) - (P66 + Q66 + R00)*(P33*dt + P66*dt*hdt + Q03))*(dt*x6 + x3 - z9))/((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))"
-equation = "((((2*dt^2*x8+4*dt*x5+4*x2)*R1111+(2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*R1212+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*R1111+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*R22+(((2*dt^2*x8+4*dt*x5+4*x2)*Q88+(4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*R1111+((2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*Q88+((-2*dt^2*x8-4*dt*x5-4*x2)*Q58+(-4*zvz+4*dt*x8+4*x5)*Q28+(-2*dt^2*zvz-2*dt^2*x5-4*dt*x2)*P88)*Q85+((4*x8-4*zaz)*Q25+(-2*dt^3*zaz-4*dt^2*x5-4*dt*x2)*P88+(4*dt*x8-4*dt*zaz)*P55)*Q58+((4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*Q55+((-4*dt*zvz+4*dt^2*zaz+4*dt*x5)*P88+(4*zaz-4*x8)*P55)*Q28+(4*zvz-4*dt*zaz-4*x5)*P88*Q25+(4*dt*zvz-2*dt^2*zaz+4*x2)*P55*P88)*R1212+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q88+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q82-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*R1111+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*Q88+((-4*zpz*Q22-dt^4*zpz*P88-4*dt^2*zpz*P55-4*zpz*P22)*Q58+(4*zpz*Q28+2*dt^2*zpz*P88)*Q52+(2*dt^3*zpz*P88+4*dt*zpz*P55)*Q28-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q85+((4*zpz*Q25+2*dt^3*zpz*P88+4*dt*zpz*P55)*Q58+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q55+(-4*dt^2*zpz*P88-4*zpz*P55)*Q28+4*dt*zpz*P88*Q25+2*dt^2*zpz*P55*P88)*Q82+(2*dt^2*zpz*P88*Q25-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q58+(-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*Q55+(4*dt*zpz*P88*Q28-4*zpz*P88*Q25-4*dt*zpz*P55*P88)*Q52+2*dt^2*zpz*P55*P88*Q28-4*dt*zpz*P55*P88*Q25+4*zpz*P55*P88*Q22+4*zpz*P22*P55*P88)/(((4*R1111+4*Q55+4*dt^2*P88+4*P55)*R1212+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*R1111+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*R22+((4*Q88+4*P88)*R1111+(4*Q55+4*dt^2*P88+4*P55)*Q88+(-4*Q58-4*dt*P88)*Q85-4*dt*P88*Q58+4*P88*Q55+4*P55*P88)*R1212+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q88+(-4*Q28-2*dt^2*P88)*Q82-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*R1111+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*Q88+((-4*Q22-dt^4*P88-4*dt^2*P55-4*P22)*Q58+(4*Q28+2*dt^2*P88)*Q52+(2*dt^3*P88+4*dt*P55)*Q28-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q85+((4*Q25+2*dt^3*P88+4*dt*P55)*Q58+(-4*Q28-2*dt^2*P88)*Q55+(-4*dt^2*P88-4*P55)*Q28+4*dt*P88*Q25+2*dt^2*P55*P88)*Q82+(2*dt^2*P88*Q25-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q58+(-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*Q55+(4*dt*P88*Q28-4*P88*Q25-4*dt*P55*P88)*Q52+2*dt^2*P55*P88*Q28-4*dt*P55*P88*Q25+4*P55*P88*Q22+4*P22*P55*P88)"
+equation = "(-(x6 - z0)*((P66*dt + Q36)*(P33*dt + P66*dt*hdt + Q03) - (P66*hdt + Q06)*(P33 + P66*dt**2 + Q33 + R99)) + ((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))*(dt*x3 + hdt*x6 + x0) - ((P66*dt + Q63)*(P66*hdt + Q06) - (P66 + Q66 + R00)*(P33*dt + P66*dt*hdt + Q03))*(dt*x6 + x3 - z9))/((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))"
+# equation = "((((2*dt^2*x8+4*dt*x5+4*x2)*R1111+(2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*R1212+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*R1111+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*R22+(((2*dt^2*x8+4*dt*x5+4*x2)*Q88+(4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*R1111+((2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*Q88+((-2*dt^2*x8-4*dt*x5-4*x2)*Q58+(-4*zvz+4*dt*x8+4*x5)*Q28+(-2*dt^2*zvz-2*dt^2*x5-4*dt*x2)*P88)*Q85+((4*x8-4*zaz)*Q25+(-2*dt^3*zaz-4*dt^2*x5-4*dt*x2)*P88+(4*dt*x8-4*dt*zaz)*P55)*Q58+((4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*Q55+((-4*dt*zvz+4*dt^2*zaz+4*dt*x5)*P88+(4*zaz-4*x8)*P55)*Q28+(4*zvz-4*dt*zaz-4*x5)*P88*Q25+(4*dt*zvz-2*dt^2*zaz+4*x2)*P55*P88)*R1212+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q88+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q82-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*R1111+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*Q88+((-4*zpz*Q22-dt^4*zpz*P88-4*dt^2*zpz*P55-4*zpz*P22)*Q58+(4*zpz*Q28+2*dt^2*zpz*P88)*Q52+(2*dt^3*zpz*P88+4*dt*zpz*P55)*Q28-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q85+((4*zpz*Q25+2*dt^3*zpz*P88+4*dt*zpz*P55)*Q58+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q55+(-4*dt^2*zpz*P88-4*zpz*P55)*Q28+4*dt*zpz*P88*Q25+2*dt^2*zpz*P55*P88)*Q82+(2*dt^2*zpz*P88*Q25-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q58+(-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*Q55+(4*dt*zpz*P88*Q28-4*zpz*P88*Q25-4*dt*zpz*P55*P88)*Q52+2*dt^2*zpz*P55*P88*Q28-4*dt*zpz*P55*P88*Q25+4*zpz*P55*P88*Q22+4*zpz*P22*P55*P88)/(((4*R1111+4*Q55+4*dt^2*P88+4*P55)*R1212+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*R1111+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*R22+((4*Q88+4*P88)*R1111+(4*Q55+4*dt^2*P88+4*P55)*Q88+(-4*Q58-4*dt*P88)*Q85-4*dt*P88*Q58+4*P88*Q55+4*P55*P88)*R1212+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q88+(-4*Q28-2*dt^2*P88)*Q82-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*R1111+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*Q88+((-4*Q22-dt^4*P88-4*dt^2*P55-4*P22)*Q58+(4*Q28+2*dt^2*P88)*Q52+(2*dt^3*P88+4*dt*P55)*Q28-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q85+((4*Q25+2*dt^3*P88+4*dt*P55)*Q58+(-4*Q28-2*dt^2*P88)*Q55+(-4*dt^2*P88-4*P55)*Q28+4*dt*P88*Q25+2*dt^2*P55*P88)*Q82+(2*dt^2*P88*Q25-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q58+(-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*Q55+(4*dt*P88*Q28-4*P88*Q25-4*dt*P55*P88)*Q52+2*dt^2*P55*P88*Q28-4*dt*P55*P88*Q25+4*P55*P88*Q22+4*P22*P55*P88)"
 
-# Remove repeated constants
-equation = replaceConst(equation)
-print equation
-# Get each individual term of the equation
-particles, positions = getParticles(equation)
-# Get unique terms
-terms, repeated = getTerms(particles, True)
-# Build Variable names for each unique term
-varl = buildVars(repeated)
-# Print new variables next to their corresponding original terms
-print "New variables are\n"
-for i in range(len(varl)):
-    print str(equation.count(repeated[i]))+"x",varl[i],"  :\t",repeated[i]
 
-new_equation = equation
-for i in range(len(varl)):
-    new_equation = new_equation.replace(repeated[i],varl[i])
+print "\nOriginal equation is:\n",equation
 
-print "\n",new_equation,"\n"
+print "\nFirst simplification is:"
+new_equation   = simplify(equation, True)
+print new_equation
+
+print "\nSecond simplification is:"
+new_equation_2 = simplify(new_equation, True)
+print new_equation_2

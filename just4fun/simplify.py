@@ -58,7 +58,6 @@ def getVariables(elements):
 
 def buildVars(terms):
     var_list = []
-    term1 = terms[0]
     for i in range(len(terms)):
         eltm = filter(None, re.split(r'[ +*-]',terms[i][1:-1]))
         newterm = u""
@@ -94,16 +93,34 @@ if len(sys.argv) >= 2:
     else: print fileName, "is NOT a valid input File"
 
 # Used Equation
-equation = "(-(x6 - z0)*((P66*dt + Q36)*(P33*dt + P66*dt*hdt + Q03) - (P66*hdt + Q06)*(P33 + P66*dt**2 + Q33 + R99)) + ((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))*(dt*x3 + hdt*x6 + x0) - ((P66*dt + Q63)*(P66*hdt + Q06) - (P66 + Q66 + R00)*(P33*dt + P66*dt*hdt + Q03))*(dt*x6 + x3 - z9))/((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))"
-# equation = "((((2*dt^2*x8+4*dt*x5+4*x2)*R1111+(2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*R1212+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*R1111+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*R22+(((2*dt^2*x8+4*dt*x5+4*x2)*Q88+(4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*R1111+((2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*Q88+((-2*dt^2*x8-4*dt*x5-4*x2)*Q58+(-4*zvz+4*dt*x8+4*x5)*Q28+(-2*dt^2*zvz-2*dt^2*x5-4*dt*x2)*P88)*Q85+((4*x8-4*zaz)*Q25+(-2*dt^3*zaz-4*dt^2*x5-4*dt*x2)*P88+(4*dt*x8-4*dt*zaz)*P55)*Q58+((4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*Q55+((-4*dt*zvz+4*dt^2*zaz+4*dt*x5)*P88+(4*zaz-4*x8)*P55)*Q28+(4*zvz-4*dt*zaz-4*x5)*P88*Q25+(4*dt*zvz-2*dt^2*zaz+4*x2)*P55*P88)*R1212+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q88+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q82-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*R1111+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*Q88+((-4*zpz*Q22-dt^4*zpz*P88-4*dt^2*zpz*P55-4*zpz*P22)*Q58+(4*zpz*Q28+2*dt^2*zpz*P88)*Q52+(2*dt^3*zpz*P88+4*dt*zpz*P55)*Q28-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q85+((4*zpz*Q25+2*dt^3*zpz*P88+4*dt*zpz*P55)*Q58+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q55+(-4*dt^2*zpz*P88-4*zpz*P55)*Q28+4*dt*zpz*P88*Q25+2*dt^2*zpz*P55*P88)*Q82+(2*dt^2*zpz*P88*Q25-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q58+(-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*Q55+(4*dt*zpz*P88*Q28-4*zpz*P88*Q25-4*dt*zpz*P55*P88)*Q52+2*dt^2*zpz*P55*P88*Q28-4*dt*zpz*P55*P88*Q25+4*zpz*P55*P88*Q22+4*zpz*P22*P55*P88)/(((4*R1111+4*Q55+4*dt^2*P88+4*P55)*R1212+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*R1111+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*R22+((4*Q88+4*P88)*R1111+(4*Q55+4*dt^2*P88+4*P55)*Q88+(-4*Q58-4*dt*P88)*Q85-4*dt*P88*Q58+4*P88*Q55+4*P55*P88)*R1212+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q88+(-4*Q28-2*dt^2*P88)*Q82-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*R1111+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*Q88+((-4*Q22-dt^4*P88-4*dt^2*P55-4*P22)*Q58+(4*Q28+2*dt^2*P88)*Q52+(2*dt^3*P88+4*dt*P55)*Q28-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q85+((4*Q25+2*dt^3*P88+4*dt*P55)*Q58+(-4*Q28-2*dt^2*P88)*Q55+(-4*dt^2*P88-4*P55)*Q28+4*dt*P88*Q25+2*dt^2*P55*P88)*Q82+(2*dt^2*P88*Q25-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q58+(-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*Q55+(4*dt*P88*Q28-4*P88*Q25-4*dt*P55*P88)*Q52+2*dt^2*P55*P88*Q28-4*dt*P55*P88*Q25+4*P55*P88*Q22+4*P22*P55*P88)"
-
+# equation = "(-(x6 - z0)*((P66*dt + Q36)*(P33*dt + P66*dt*hdt + Q03) - (P66*hdt + Q06)*(P33 + P66*dt**2 + Q33 + R99)) + ((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))*(dt*x3 + hdt*x6 + x0) - ((P66*dt + Q63)*(P66*hdt + Q06) - (P66 + Q66 + R00)*(P33*dt + P66*dt*hdt + Q03))*(dt*x6 + x3 - z9))/((P66*dt + Q36)*(P66*dt + Q63) - (P66 + Q66 + R00)*(P33 + P66*dt**2 + Q33 + R99))"
+equation = "((((2*dt^2*x8+4*dt*x5+4*x2)*R1111+(2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*R1212+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*R1111+(4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*R22+(((2*dt^2*x8+4*dt*x5+4*x2)*Q88+(4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*R1111+((2*dt^2*x8+4*dt*x5+4*x2)*Q55+(4*zvz-4*dt*x8-4*x5)*Q25+(2*dt^3*zvz+2*dt^3*x5+4*dt^2*x2)*P88+(4*dt*zvz-2*dt^2*x8+4*x2)*P55)*Q88+((-2*dt^2*x8-4*dt*x5-4*x2)*Q58+(-4*zvz+4*dt*x8+4*x5)*Q28+(-2*dt^2*zvz-2*dt^2*x5-4*dt*x2)*P88)*Q85+((4*x8-4*zaz)*Q25+(-2*dt^3*zaz-4*dt^2*x5-4*dt*x2)*P88+(4*dt*x8-4*dt*zaz)*P55)*Q58+((4*zaz-4*x8)*Q28+(2*dt^2*zaz+4*dt*x5+4*x2)*P88)*Q55+((-4*dt*zvz+4*dt^2*zaz+4*dt*x5)*P88+(4*zaz-4*x8)*P55)*Q28+(4*zvz-4*dt*zaz-4*x5)*P88*Q25+(4*dt*zvz-2*dt^2*zaz+4*x2)*P55*P88)*R1212+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q88+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q82-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*R1111+((4*zpz*Q22+dt^4*zpz*P88+4*dt^2*zpz*P55+4*zpz*P22)*Q55+(-4*zpz*Q25-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q52+(-2*dt^3*zpz*P88-4*dt*zpz*P55)*Q25+(4*dt^2*zpz*P88+4*zpz*P55)*Q22+(dt^4*zpz*P55+4*dt^2*zpz*P22)*P88+4*zpz*P22*P55)*Q88+((-4*zpz*Q22-dt^4*zpz*P88-4*dt^2*zpz*P55-4*zpz*P22)*Q58+(4*zpz*Q28+2*dt^2*zpz*P88)*Q52+(2*dt^3*zpz*P88+4*dt*zpz*P55)*Q28-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q85+((4*zpz*Q25+2*dt^3*zpz*P88+4*dt*zpz*P55)*Q58+(-4*zpz*Q28-2*dt^2*zpz*P88)*Q55+(-4*dt^2*zpz*P88-4*zpz*P55)*Q28+4*dt*zpz*P88*Q25+2*dt^2*zpz*P55*P88)*Q82+(2*dt^2*zpz*P88*Q25-4*dt*zpz*P88*Q22+(-2*dt^3*zpz*P55-4*dt*zpz*P22)*P88)*Q58+(-2*dt^2*zpz*P88*Q28+4*zpz*P88*Q22+(4*dt^2*zpz*P55+4*zpz*P22)*P88)*Q55+(4*dt*zpz*P88*Q28-4*zpz*P88*Q25-4*dt*zpz*P55*P88)*Q52+2*dt^2*zpz*P55*P88*Q28-4*dt*zpz*P55*P88*Q25+4*zpz*P55*P88*Q22+4*zpz*P22*P55*P88)/(((4*R1111+4*Q55+4*dt^2*P88+4*P55)*R1212+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*R1111+(4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*R22+((4*Q88+4*P88)*R1111+(4*Q55+4*dt^2*P88+4*P55)*Q88+(-4*Q58-4*dt*P88)*Q85-4*dt*P88*Q58+4*P88*Q55+4*P55*P88)*R1212+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q88+(-4*Q28-2*dt^2*P88)*Q82-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*R1111+((4*Q22+dt^4*P88+4*dt^2*P55+4*P22)*Q55+(-4*Q25-2*dt^3*P88-4*dt*P55)*Q52+(-2*dt^3*P88-4*dt*P55)*Q25+(4*dt^2*P88+4*P55)*Q22+(dt^4*P55+4*dt^2*P22)*P88+4*P22*P55)*Q88+((-4*Q22-dt^4*P88-4*dt^2*P55-4*P22)*Q58+(4*Q28+2*dt^2*P88)*Q52+(2*dt^3*P88+4*dt*P55)*Q28-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q85+((4*Q25+2*dt^3*P88+4*dt*P55)*Q58+(-4*Q28-2*dt^2*P88)*Q55+(-4*dt^2*P88-4*P55)*Q28+4*dt*P88*Q25+2*dt^2*P55*P88)*Q82+(2*dt^2*P88*Q25-4*dt*P88*Q22+(-2*dt^3*P55-4*dt*P22)*P88)*Q58+(-2*dt^2*P88*Q28+4*P88*Q22+(4*dt^2*P55+4*P22)*P88)*Q55+(4*dt*P88*Q28-4*P88*Q25-4*dt*P55*P88)*Q52+2*dt^2*P55*P88*Q28-4*dt*P55*P88*Q25+4*P55*P88*Q22+4*P22*P55*P88)"
 
 print "\nOriginal equation is:\n",equation
+num_mul = equation.count("*")
+num_div = equation.count("/")
+num_sum = equation.count("+")
+num_sub = equation.count("-")
+print "There are", num_mul, "multiplications"
+print "There are", num_div, "divisions"
+print "There are", num_sum, "sums"
+print "There are", num_sub, "substractions"
+print "Total of", num_mul+num_div+num_sum+num_sub, "operations BEFORE simplification\n"
 
-print "\nFirst simplification is:"
+# print "\nFirst simplification:"
 new_equation   = simplify(equation, True)
-print new_equation
+# print new_equation
 
-print "\nSecond simplification is:"
+# print "\nSecond simplification:"
 new_equation_2 = simplify(new_equation, True)
-print new_equation_2
+print "\n",new_equation_2,"\n"
+
+num_mul = new_equation_2.count("*")
+num_div = new_equation_2.count("/")
+num_sum = new_equation_2.count("+")
+num_sub = new_equation_2.count("-")
+print "There are", num_mul, "multiplications"
+print "There are", num_div, "divisions"
+print "There are", num_sum, "sums"
+print "There are", num_sub, "substractions"
+print "Total of", num_mul+num_div+num_sum+num_sub, "operations AFTER simplification"

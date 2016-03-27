@@ -1,3 +1,9 @@
+# ATTENTION
+
+This project has been moved to its own repository:
+
+[https://github.com/Mayitzin/OctaveMarkup]
+
 # GNU Octave Markup
 
 This project intends to create Markup support for GNU Octave, based on the [Markup](http://de.mathworks.com/help/matlab/matlab_prog/marking-up-matlab-comments-for-publishing.html "MATLAB - Publishing Markup") defined by MATLAB, making both compatible.

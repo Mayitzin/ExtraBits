@@ -10,9 +10,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define size 3
+#define defSize 3
 
-int columns, rows;
+int columns = defSize, rows = defSize;
 
 int * transpose(int *matrix_ptr, int *matrix2_ptr, int y, int x);
 int * initMatrix(int *matrix, int y, int x);
@@ -23,12 +23,16 @@ void printMatrixElems(int *matrix);
 
 int main(int argc, char *argv[]){
     // Read default values
+    // if(argc>1){
+    //     rows = atoi(argv[1]);
+    //     columns = atoi(argv[2]);
+    // } else {
+    //     rows = defSize;
+    //     columns = defSize;
+    // }
     if(argc>1){
         rows = atoi(argv[1]);
         columns = atoi(argv[2]);
-    } else {
-        rows = size;
-        columns = size;
     }
 
     // Initialize Matrix
@@ -164,6 +168,17 @@ void printMatrixElems(int *matrix){
     }
 }
 
+
+/**
+* @brief Initialize a Matrix with zeros.
+* 
+* This function builds a matrix with the given dimensions, whose elements are a
+* set of integers equal to zero.
+*
+* @param  [in] y is the number of columns for the new matrix.
+* @param  [in] x is the number of rows for the new matrix.
+* @param  [out] m_ptr is the pointer to the created matrix.
+*/
 int * initZeros(int y, int x){
     int matrix[x][y];
     int *m_ptr;

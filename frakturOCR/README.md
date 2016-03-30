@@ -1,3 +1,9 @@
+# ATTENTION
+
+This project has been moved to its own repository:
+
+[https://github.com/Mayitzin/frakturOCR.git](https://github.com/Mayitzin/frakturOCR.git)
+
 # Fraktur OCR
 
 This project is to build an OCR for Fraktur typefaces.

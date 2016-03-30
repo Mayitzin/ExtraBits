@@ -18,18 +18,11 @@ int * transpose(int *matrix_ptr, int *matrix2_ptr, int y, int x);
 int * initMatrix(int *matrix, int y, int x);
 int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x);
 int * initZeros(int y, int x);
-void printMatrix(int *matrix);
+void printMatrix(int *matrix, int y, int x);
 void printMatrixElems(int *matrix);
 
 int main(int argc, char *argv[]){
     // Read default values
-    // if(argc>1){
-    //     rows = atoi(argv[1]);
-    //     columns = atoi(argv[2]);
-    // } else {
-    //     rows = defSize;
-    //     columns = defSize;
-    // }
     if(argc>1){
         rows = atoi(argv[1]);
         columns = atoi(argv[2]);
@@ -45,7 +38,7 @@ int main(int argc, char *argv[]){
     m_ptr = initMatrix(m_ptr, rows, columns);
     // Print the elements
     printMatrixElems(m_ptr);
-    printMatrix(m_ptr);
+    printMatrix(m_ptr, rows, columns);
     m_ptr = matrix[0];
 
     // Copy the matrix and show it
@@ -54,17 +47,17 @@ int main(int argc, char *argv[]){
     m2_ptr = matrix2[0];
     m2_ptr = copyMatrix(m_ptr, m2_ptr, rows, columns);
     printf("\nSecond matrix:\n");
-    printMatrix(m2_ptr);
+    printMatrix(m2_ptr, rows, columns);
 
     // New matrix
     printf("Creating new matrix\n");
     int matrix3[columns][rows];
     int *m3_ptr;
     m3_ptr = matrix3[0];
-    m3_ptr = transpose(m_ptr, m3_ptr, rows, columns);
+    m3_ptr = transpose(m_ptr, m3_ptr, columns, rows);
     printf("The new matrix is in 0x%p\n", m3_ptr);
     printMatrixElems(m3_ptr);
-    printMatrix(m3_ptr);
+    printMatrix(m3_ptr, columns, rows);
 
     return (0);
 }
@@ -119,11 +112,16 @@ int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x){
 *
 * @param  [in] matrix is the pointer to the matrix to show.
 */
-int * transpose(int *matrix_ptr, int *matrix2_ptr, int y, int x){
-    int i;
+int * transpose(int *matrix_ptr, int *matrix2_ptr, int rows, int columns){
+    int i, j;
     // Set values for each element
-    for(i=0; i<(x*y); ++i){
-        *(matrix2_ptr+i) = *(matrix_ptr+i);
+    for(i=0; i<rows; ++i){
+        for(j=0; j<columns; ++j){
+            printf("0x%p : M[%d][%d] = %d\n", matrix2_ptr, i, j, *(matrix_ptr));
+            *(matrix2_ptr) = *(matrix_ptr);
+            ++matrix_ptr;
+            ++matrix2_ptr;
+        }
     }
     return (matrix2_ptr);
 }
@@ -137,7 +135,7 @@ int * transpose(int *matrix_ptr, int *matrix2_ptr, int y, int x){
 *
 * @param  [in] matrix is the pointer to the matrix to show.
 */
-void printMatrix(int *matrix){
+void printMatrix(int *matrix, int rows, int columns){
     int i, j;
     for(i=0; i<rows; ++i){
         for(j=0; j<columns; ++j){

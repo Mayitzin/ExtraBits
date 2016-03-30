@@ -55,10 +55,12 @@ def getTerms(particles, debug=False):
         unique = repeated
     return unique, repeated
 
+
 def getVariables(elements):
     atoms = re.split(r'[ +-]', element[1:-1])
     atoms = [x for x in atoms if x]
     return atoms
+
 
 def buildVars(terms):
     var_list = []
@@ -71,6 +73,14 @@ def buildVars(terms):
         if newterm[0].isnumeric(): newterm = "_"+newterm
         var_list.append(newterm)
     return var_list
+
+
+def countOps(equation):
+    num_pw1, num_pw2 = equation.count("**"), equation.count("^")
+    num_mul, num_div = equation.count("*"), equation.count("/")
+    num_sum, num_sub = equation.count("+"), equation.count("-")
+    return num_pw1+num_pw2+num_mul+num_div+num_sum+num_sub
+
 
 def simplify(equation, debug=False):
     # Remove repeated constants

@@ -14,6 +14,7 @@
 int dim_x, dim_y;
 
 int * transpose(int *matrix);
+int * initMatrix(int *matrix, int y, int x);
 int * initZeros(int y, int x);
 void printMatrix(int *matrix);
 void printMatrixElems(int *matrix);
@@ -35,9 +36,10 @@ int main(int argc, char *argv[]){
 
     int i, j;
     // Set values for each element
-    for(i=0; i<(dim_x*dim_y); ++i){
-        *(m_ptr+i) = i+1;
-    }
+    // for(i=0; i<(dim_x*dim_y); ++i){
+    //     *(m_ptr+i) = i+1;
+    // }
+    m_ptr = initMatrix(m_ptr, dim_y, dim_x);
     // Print the elements
     printMatrixElems(m_ptr);
     printMatrix(m_ptr);
@@ -52,6 +54,27 @@ int main(int argc, char *argv[]){
     printMatrix(tm);
 
     return (0);
+}
+
+
+/**
+* @brief Initialize a Matrix with a sequence of increasing integers.
+* 
+* This function builds a matrix with the given dimensions, whose elements are a
+* set of integers increasing from the first upper-left element until reaching
+* the last element of the matrix at the lower-right.
+*
+* @param  [in] matrix_ptr is the pointer to the matrix to initialize.
+* @param  [in] y is the number of columns for the new matrix.
+* @param  [in] x is the number of rows for the new matrix.
+*/
+int * initMatrix(int *matrix_ptr, int y, int x){
+    int i;
+    // Set values for each element
+    for(i=0; i<(x*y); ++i){
+        *(matrix_ptr+i) = i+1;
+    }
+    return (matrix_ptr);
 }
 
 

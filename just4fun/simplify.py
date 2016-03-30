@@ -125,10 +125,8 @@ if fileName is not None:
         print "\n  --------------- RESULTS OF EQUATION %d ---------------"%(i+1)
         # Used Equation
         print equation
-        num_pw1, num_pw2 = equation.count("**"), equation.count("^")
-        num_mul, num_div = equation.count("*"), equation.count("/")
-        num_sum, num_sub = equation.count("+"), equation.count("-")
-        print "Total of", num_pw1+num_pw2+num_mul+num_div+num_sum+num_sub, "operations BEFORE simplification\n"
+        numOps = countOps(equation)
+        print "Total of", numOps, "operations BEFORE simplification\n"
 
         # First simplification
         new_equation   = simplify(equation, True)
@@ -136,10 +134,8 @@ if fileName is not None:
         new_equation_2 = simplify(new_equation, True)
 
         print new_equation_2
-        num_pw1, num_pw2 = new_equation_2.count("**"), new_equation_2.count("^")
-        num_mul, num_div = new_equation_2.count("*"), new_equation_2.count("/")
-        num_sum, num_sub = new_equation_2.count("+"), new_equation_2.count("-")
-        print "Total of", num_pw1+num_pw2+num_mul+num_div+num_sum+num_sub, "operations AFTER simplification"
+        numOps = countOps(new_equation_2)
+        print "Total of", numOps, "operations BEFORE simplification\n"
 else:
     equation = default_eq
     print "Using default equation"

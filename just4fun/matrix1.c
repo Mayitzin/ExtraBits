@@ -95,7 +95,6 @@ int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x){
     int i;
     // Set values for each element
     for(i=0; i<(x*y); ++i){
-        printf("0x%p : M[%d] = %d\n", matrix_ptr, i, *matrix_ptr);
         *(matrix2_ptr+i) = *(matrix_ptr+i);
     }
     return (matrix2_ptr);

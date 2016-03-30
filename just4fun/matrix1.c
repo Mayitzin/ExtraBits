@@ -1,5 +1,11 @@
 /*
  * Matrix addressing
+ *
+ * History:
+ *     04.11.2015. First implementation.
+ *
+ * @author: Mario Garcia.
+ * www.mayitzin.com
  */
 
 #include <stdio.h>
@@ -23,19 +29,20 @@ int main(int argc, char *argv[]){
     // Initialize Matrix
     int matrix[dim_y][dim_x];
     printf("The dimensions are %d by %d\n", dim_y, dim_x);
-    // Get pointer of Matrix
+    // Set pointer of Matrix
     int *m_ptr;
-    m_ptr = &matrix[0][0];
+    m_ptr = matrix[0];
 
     int i, j;
     // Set values for each element
     for(i=0; i<(dim_x*dim_y); ++i){
         *(m_ptr+i) = i+1;
     }
-    // // Print the elements
+    // Print the elements
     printMatrixElems(m_ptr);
     printMatrix(m_ptr);
-    m_ptr = &matrix[0][0];
+    m_ptr = matrix[0];
+
     // New matrix
     printf("Creating new matrix\n");
     int *tm;
@@ -62,6 +69,15 @@ int * transpose(int *matrix){
     return (newm_ptr);
 }
 
+
+/**
+* @brief Print matrix elements.
+* 
+* This function simply prints the elements of the matrix in an array-shaped
+* output.
+*
+* @param  [in] matrix is the pointer to the matrix to show.
+*/
 void printMatrix(int *matrix){
     int i, j;
     for(i=0; i<dim_y; ++i){
@@ -73,6 +89,15 @@ void printMatrix(int *matrix){
     }
 }
 
+
+/**
+* @brief Print matrix elements with their memory addresses.
+* 
+* This function prints out the elements of the given matrix preceded by their
+* address in the memory and their position in the matrix in a C/Python style.
+*
+* @param  [in] matrix is the pointer to the matrix to show.
+*/
 void printMatrixElems(int *matrix){
     int i, j;
     // Print the elements

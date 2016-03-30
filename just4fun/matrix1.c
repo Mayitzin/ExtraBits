@@ -89,7 +89,10 @@ int * initMatrix(int *matrix_ptr, int y, int x){
 * This function copies a matrix, whose elements are the same values as in the
 * given input matrix.
 *
-* @param  [in] matrix_ptr is the pointer to the matrix to initialize.
+* @param  [in] matrix_ptr is the pointer of the matrix copying from.
+* @param  [in] matrix2_ptr is the pointer of the matrix copying to.
+* @param  [in] y is the number of columns for the new matrix.
+* @param  [in] x is the number of rows for the new matrix.
 */
 int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x){
     int i;

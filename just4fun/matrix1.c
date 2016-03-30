@@ -9,17 +9,20 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #define size 3
 
 int dim_x, dim_y;
 
 int * transpose(int *matrix);
 int * initMatrix(int *matrix, int y, int x);
+int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x);
 int * initZeros(int y, int x);
 void printMatrix(int *matrix);
 void printMatrixElems(int *matrix);
 
 int main(int argc, char *argv[]){
+    // Read default values
     if(argc>1){
         dim_y = atoi(argv[1]);
         dim_x = atoi(argv[2]);
@@ -27,23 +30,25 @@ int main(int argc, char *argv[]){
         dim_y = size;
         dim_x = size;
     }
+
     // Initialize Matrix
     int matrix[dim_y][dim_x];
     printf("The dimensions are %d by %d\n", dim_y, dim_x);
     // Set pointer of Matrix
     int *m_ptr;
     m_ptr = matrix[0];
-
-    int i, j;
     // Set values for each element
-    // for(i=0; i<(dim_x*dim_y); ++i){
-    //     *(m_ptr+i) = i+1;
-    // }
     m_ptr = initMatrix(m_ptr, dim_y, dim_x);
     // Print the elements
     printMatrixElems(m_ptr);
     printMatrix(m_ptr);
     m_ptr = matrix[0];
+    // Copy the matrix and show it
+    int matrix2[dim_y][dim_x];
+    int *m2_ptr;
+    m2_ptr = matrix2[0];
+    m2_ptr = copyMatrix(m_ptr, m2_ptr, dim_y, dim_x);
+    printMatrix(m2_ptr);
 
     // New matrix
     printf("Creating new matrix\n");
@@ -75,6 +80,25 @@ int * initMatrix(int *matrix_ptr, int y, int x){
         *(matrix_ptr+i) = i+1;
     }
     return (matrix_ptr);
+}
+
+
+/**
+* @brief Copy a Matrix to a new one.
+* 
+* This function copies a matrix, whose elements are the same values as in the
+* given input matrix.
+*
+* @param  [in] matrix_ptr is the pointer to the matrix to initialize.
+*/
+int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x){
+    int i;
+    // Set values for each element
+    for(i=0; i<(x*y); ++i){
+        printf("0x%p : M[%d] = %d\n", matrix_ptr, i, *matrix_ptr);
+        *(matrix2_ptr+i) = *(matrix_ptr+i);
+    }
+    return (matrix2_ptr);
 }
 
 

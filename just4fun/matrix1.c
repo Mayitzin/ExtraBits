@@ -54,6 +54,14 @@ int main(int argc, char *argv[]){
     return (0);
 }
 
+
+/**
+* @brief Transpose the matrix.
+* 
+* This function re-adresses the elements of the matrix to transpose a matrix.
+*
+* @param  [in] matrix is the pointer to the matrix to show.
+*/
 int * transpose(int *matrix){
     int new_matrix[dim_x][dim_y];
     int *newm_ptr;
@@ -65,7 +73,7 @@ int * transpose(int *matrix){
             // ++matrix;
         }
     }
-    newm_ptr = &new_matrix[0][0];
+    newm_ptr = new_matrix[0];
     return (newm_ptr);
 }
 

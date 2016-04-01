@@ -3,6 +3,7 @@
  *
  * History:
  *     04.11.2015. First implementation.
+ *     30.03.2015. Added descriptions and functions.
  *
  * @author: Mario Garcia.
  * www.mayitzin.com
@@ -55,7 +56,7 @@ int main(int argc, char *argv[]){
     int *m3_ptr;
     m3_ptr = matrix3[0];
     m3_ptr = transpose(m_ptr, m3_ptr, columns, rows);
-    printf("The new matrix is in 0x%p\n", m3_ptr);
+    printf("\nThird matrix:\n");
     printMatrixElems(m3_ptr);
     printMatrix(m3_ptr, columns, rows);
 
@@ -119,7 +120,6 @@ int * transpose(int *matrix_ptr, int *matrix2_ptr, int rows, int columns){
     // Set values for each element
     for(i=0; i<rows; ++i){
         for(j=0; j<columns; ++j){
-            printf("0x%p : M[%d][%d] = %d\n", matrix2_ptr, i, j, *(matrix_ptr));
             *(matrix2_ptr) = *(matrix_ptr);
             ++matrix_ptr;
             ++matrix2_ptr;

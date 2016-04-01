@@ -51,7 +51,6 @@ int main(int argc, char *argv[]){
     printMatrix(m2_ptr, rows, columns);
 
     // New matrix
-    printf("Creating new matrix\n");
     int matrix3[columns][rows];
     int *m3_ptr;
     m3_ptr = matrix3[0];

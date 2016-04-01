@@ -114,6 +114,8 @@ int * copyMatrix(int *matrix_ptr, int *matrix2_ptr, int y, int x){
 */
 int * transpose(int *matrix_ptr, int *matrix2_ptr, int rows, int columns){
     int i, j;
+    int *init_ptr;
+    init_ptr = matrix2_ptr;
     // Set values for each element
     for(i=0; i<rows; ++i){
         for(j=0; j<columns; ++j){
@@ -123,7 +125,7 @@ int * transpose(int *matrix_ptr, int *matrix2_ptr, int rows, int columns){
             ++matrix2_ptr;
         }
     }
-    return (matrix2_ptr);
+    return (init_ptr);
 }
 
 

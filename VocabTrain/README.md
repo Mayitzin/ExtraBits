@@ -23,4 +23,5 @@ This project is targeted to build a Vocabulary Trainer similar to the flip cards
 
 ## References
 
-* None yet.
+* [How to squeeze a Lexicon](http://www.uio.no/studier/emner/matnat/ifi/INF3800/v15/slides/how_to_squeeze_a_lexicon.pdf) by Marcin G. Ciura and Sebastian Deorowicz.
+* [Trie](https://en.wikipedia.org/wiki/Trie). An ordered tree data structure used to store a dynamic set or associative aray, whose keys are strings.

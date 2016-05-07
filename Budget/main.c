@@ -20,29 +20,10 @@ struct transaction {
     char email[MAIL_LENGTH];
 };
 
-
-void transaction_print(struct transaction *tran) {
-    printf("%d %s %s\n",  tran->id,  tran->name,  tran->email);
-}
-
-void die(const char *message) {
-    if(errno) { perror(message); }
-    else { printf("ERROR: %s\n", message); }
-    exit(1);
-}
-
-void setInfo(struct transaction *tran, int id, char *name, char *email) {
-    tran->id = id;
-    strcpy(tran->name, name);
-    strcpy(tran->email, email);
-}
-
-struct transaction *getTrans(int id, char *name, char *email) {
-    struct transaction *t4 = malloc(sizeof(struct transaction));
-    if(!t4) die("Memory error");
-    setInfo(t4, id, name, email);
-    return t4;
-}
+void transaction_print(struct transaction *tran);
+void die(const char *message);
+void setInfo(struct transaction *tran, int id, char *name, char *email);
+struct transaction *getTrans(int id, char *name, char *email);
 
 
 // ------------------------------- MAIN ROUTINE -------------------------------
@@ -73,4 +54,28 @@ int main(int argc, char *argv[]){
     transaction_print(t4);
 
     return 0;
+}
+
+
+void transaction_print(struct transaction *tran) {
+    printf("%d %s %s\n",  tran->id,  tran->name,  tran->email);
+}
+
+void die(const char *message) {
+    if(errno) { perror(message); }
+    else { printf("ERROR: %s\n", message); }
+    exit(1);
+}
+
+void setInfo(struct transaction *tran, int id, char *name, char *email) {
+    tran->id = id;
+    strcpy(tran->name, name);
+    strcpy(tran->email, email);
+}
+
+struct transaction *getTrans(int id, char *name, char *email) {
+    struct transaction *t4 = malloc(sizeof(struct transaction));
+    if(!t4) die("Memory error");
+    setInfo(t4, id, name, email);
+    return t4;
 }

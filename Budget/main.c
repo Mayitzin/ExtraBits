@@ -20,17 +20,15 @@ struct transaction {
     char email[MAIL_LENGTH];
 };
 
+// Declare Functions
 void transaction_print(struct transaction *tran);
 void die(const char *message);
 void setInfo(struct transaction *tran, int id, char *name, char *email);
 struct transaction *getTrans(int id, char *name, char *email);
 
-
 // ------------------------------- MAIN ROUTINE -------------------------------
 
-int main(int argc, char *argv[]){
-    printf("First Test\n");
-
+int main(int argc, char *argv[]) {
     // First Transaction
     struct transaction t1 = {.id = 123, .name = "Mario"};
     transaction_print(&t1);
@@ -56,6 +54,8 @@ int main(int argc, char *argv[]){
     return 0;
 }
 
+
+// Define Functions
 
 void transaction_print(struct transaction *tran) {
     printf("%d %s %s\n",  tran->id,  tran->name,  tran->email);

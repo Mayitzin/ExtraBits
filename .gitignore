@@ -27,3 +27,7 @@
 *.log
 *.pdf
 *.txss
+
+# Workspaces #
+##############
+octave-workspace

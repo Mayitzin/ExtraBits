@@ -6,6 +6,11 @@
  * @author: Mario Garcia
 **/
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+
 #define NAME_LENGTH 100
 #define MAIL_LENGTH 50
 
@@ -19,4 +24,4 @@ struct transaction {
 void transaction_print(struct transaction *tran);
 void die(const char *message);
 void setInfo(struct transaction *tran, int id, char *name, char *email);
-struct transaction *getTrans(int id, char *name, char *email);
+struct transaction *setTransaction(int id, char *name, char *email);

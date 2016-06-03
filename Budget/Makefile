@@ -8,7 +8,7 @@ SRC = main.c transactions.c
 
 OBJS = $(SRC:.c=.o)
 
-MAIN = kf
+MAIN = budget
 
 .PHONY: depend clean
 
@@ -16,10 +16,10 @@ MAIN = kf
 SHELL=C:\Windows\System32\cmd.exe
 
 all: $(MAIN)
-	@echo Simple executable named kf has been compiled
+	@echo Executable named budget has been compiled
 
-$(MAIN): $(OBJS)
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
+$(MAIN): $(SRC)
+	$(CC) $(CFLAGS) -o $(MAIN) $(SRC)
 
 clean:
 	$(RM) *.o *~ $(MAIN)

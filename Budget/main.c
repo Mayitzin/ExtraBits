@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     transaction_print(&t1);
 
     // Second Transaction
-    struct transaction *t2 = setTransaction(456, "Johanna", "johanna@mail.com");
+    struct transaction *t2 = setTransaction(456, "Johanna", 500.0, "johanna@mail.com");
     transaction_print(t2);
 
     return 0;

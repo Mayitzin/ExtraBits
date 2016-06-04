@@ -36,6 +36,7 @@ char email[MAIL_LENGTH] = "john@mail.com";
 void transaction_print(struct transaction *tran) {
     printf("\nTransaction No.:  %d\n", tran->id);
     printf("\tAccount holder:   %s\n", tran->name);
+    printf("\tAmount:           %.2f\n", tran->amount);
     printf("\tContact Email:    %s\n", tran->email);
 }
 
@@ -74,9 +75,10 @@ void die(const char *message) {
 *     setInfo(t3, 345, "Mario", "mario@mail.com");
 * @endcode
 */
-void setInfo(struct transaction *tran, int id, char *name, char *email) {
+void setInfo(struct transaction *tran, int id, char *name, double amount, char *email) {
     tran->id = id;
     strcpy(tran->name, name);
+    tran->amount = amount;
     strcpy(tran->email, email);
 }
 
@@ -97,9 +99,9 @@ void setInfo(struct transaction *tran, int id, char *name, char *email) {
 *     struct transaction *t4 = setTransaction(456, "Johanna", "johanna@mail.com");
 * @endcode
 */
-struct transaction *setTransaction(int id, char *name, char *email) {
+struct transaction *setTransaction(int id, char *name, double amount, char *email) {
     struct transaction *t_struct = malloc(sizeof(struct transaction));
     if(!t_struct) die("Memory error");
-    setInfo(t_struct, id, name, email);
+    setInfo(t_struct, id, name, amount, email);
     return t_struct;
 }

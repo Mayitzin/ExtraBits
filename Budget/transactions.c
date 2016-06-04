@@ -13,6 +13,12 @@
 
 #include "transactions.h"
 
+// Global initial variables
+int id=0x00;
+double amount=0.0;
+char name[NAME_LENGTH] = "John Doe";
+char email[MAIL_LENGTH] = "john@mail.com";
+
 /**
 * @brief Prints the information of the transaction.
 *
@@ -28,7 +34,9 @@
 * @endcode
 */
 void transaction_print(struct transaction *tran) {
-    printf("%d %s %s\n",  tran->id,  tran->name,  tran->email);
+    printf("\nTransaction No.:  %d\n", tran->id);
+    printf("\tAccount holder:   %s\n", tran->name);
+    printf("\tContact Email:    %s\n", tran->email);
 }
 
 

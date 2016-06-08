@@ -23,6 +23,7 @@ struct transaction {
 void transaction_print(struct transaction *tran);
 void die(const char *message);
 void setInfo(struct transaction *tran, int id, char *name, double amount, char *email);
+void printTime(void);
 struct transaction *setTransaction(int id, char *name, double amount, char *email);
 
 #endif // TRANSACTIONS_H

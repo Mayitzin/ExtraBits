@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <time.h>
 
 #include "transactions.h"
 
@@ -104,4 +105,15 @@ struct transaction *setTransaction(int id, char *name, double amount, char *emai
     if(!t_struct) die("Memory error");
     setInfo(t_struct, id, name, amount, email);
     return t_struct;
+}
+
+
+void printTime(void){
+    // Obtain current time
+    time_t current_time;
+    current_time = time(NULL);
+    // Convert to local time format
+    char* c_time_string;
+    c_time_string = ctime(&current_time);
+    printf("Current time is %s", c_time_string);
 }

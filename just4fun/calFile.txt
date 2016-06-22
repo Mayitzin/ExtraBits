@@ -1,0 +1,8 @@
+// Natural Values
+gf:9.8
+// Scaling Values
+scm:1.123
+// Bias Values
+bmx:0.0
+bmy:1.0
+bmz:2.0

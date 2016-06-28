@@ -16,6 +16,7 @@ from PyQt4.QtGui import *
 
 class Form(QDialog):
     def __init__(self, parent=None):
+        # Give Form a default parent of None
         super(Form, self).__init__(parent)
         # Create a Widget to display text and HTML
         self.browser = QTextBrowser()

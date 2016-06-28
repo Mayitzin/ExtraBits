@@ -3,7 +3,7 @@
 Based on the examples of the book "Rapid GUI programming with Python and Qt" by
 Mark Summerfield.
 
-Further reference see:
+For further reference see:
 - http://doc.qt.io/qt-4.8/qobject.html#connect
 
 @author: Mario Garcia
@@ -17,6 +17,7 @@ from PyQt4.QtGui import *
 
 class Form(QDialog):
     def __init__(self, parent=None):
+        # Give Form a default parent of None
         super(Form, self).__init__(parent)
         # Retrieve data from internet
         date = self.getdata()

@@ -1,4 +1,9 @@
+# -*- coding: utf-8 -*-
 """Calculator GUI
+
+Based on the examples of the book "Rapid GUI programming with Python and Qt" by
+Mark Summerfield.
+
 @author: Mario Garcia
 www.mayitzin.com
 """

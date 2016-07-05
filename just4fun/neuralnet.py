@@ -70,13 +70,12 @@ d = alpha*np.dot(np.matrix(h1).T,np.matrix(e))
 print "\nAdjustments:\n", d
 
 ## Backward Propagation
-e_h = w_sums(e, W[1,:,:])
+e_h = w_sums(e, W[-1,:,:])
 print "\nWeighted sums of backward propagation:\n", e_h
 
-print "\n"
-print W[0,0,:]
+print "\n(1 - tanh2(", W[0,0,:], ") ="
 print nn_tanh2(W[0,0,:])
-z_eh = np.multiply(np.matrix(e_h),np.matrix(nn_tanh2(W[0,0,:])))
+z_eh = W[0,0,:]*nn_tanh2(W[0,0,:])
 print "\nElement-wise multiplication:\n", z_eh
 
 

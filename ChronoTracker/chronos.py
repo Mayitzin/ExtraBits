@@ -37,18 +37,22 @@ class Event(object):
         self.d = self.buildDict()
 
     def setDate(self, date):
+        # Default values
+        self.year = "0000"
+        self.month = "00"
+        self.day = "00"
         self.dateID = date
         if "." in date:
             dateElems = date.split(".")
-            self.dateID = "".join(dateElems)
+            if len(dateElems)==3:
+                self.year = self.dateID[:4]
+                self.month = self.dateID[4:6]
+                self.day = self.dateID[6:8]
+            self.dateID = "".join([self.year,self.month,self.day])
         if len(self.dateID)==8:
             self.year = self.dateID[:4]
             self.month = self.dateID[4:6]
             self.day = self.dateID[6:8]
-        else:
-            self.year = "0000"
-            self.month = "00"
-            self.day = "00"
         self.date = self.day+"."+self.month+"."+self.year
         self.dateID = self.year+self.month+self.day
 
@@ -71,6 +75,10 @@ class Event(object):
         self.d = {self.dateID:{self.date:{"year":self.year,"month":self.month,"day":self.day},"description":self.description,"references":self.references,"links":self.links}}
         return self.d
 
+    def saveEvent(self, fileName="output.dat"):
+        with open(fileName, 'w') as jsonFile:
+            json.dump(self.d, jsonFile)
+
     def printDict(self):
         print json.dumps(self.d, sort_keys=True, indent=4)
 
@@ -87,15 +95,11 @@ def printInfo(event=None):
     print "\tLinks:", event.links
 
 
-description = "It is today's date."
-references = ["ref1", "ref2"]
-links = ["link1","link2"]
-
 new_event2 = Event()
 new_event2.setDate("1987.02.13")
 new_event2.setDescription("My Birthday")
-new_event2.setReferences(references)
-new_event2.setLinks(links)
+new_event2.setReferences(["ref1", "ref2"])
+new_event2.setLinks(["link1","link2"])
 
 print new_event2.date
 print new_event2.description
@@ -105,3 +109,5 @@ new_event2.printDict()
 printInfo(new_event2)
 
 printInfo()
+
+new_event2.saveEvent("output.txt")

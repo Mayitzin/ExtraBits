@@ -77,6 +77,8 @@ class Event(object):
         return self.d
 
     def updateDict(self):
+        self.d[self.dateID] = {}
+        self.d[self.dateID][self.date] = {}
         self.d[self.dateID][self.date]["day"] = self.day
         self.d[self.dateID][self.date]["month"] = self.month
         self.d[self.dateID][self.date]["year"] = self.year
@@ -145,9 +147,6 @@ new_event.setDescription("My Birthday")
 new_event.setReferences(["ref1", "ref2"])
 new_event.setLinks(["link1","link2"])
 new_event.saveEvent("output.txt")
-
-print new_event.date
-print new_event.description
 
 new_event.printDict()
 printInfo(new_event)

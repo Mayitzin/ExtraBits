@@ -67,7 +67,7 @@ class Event(object):
             self.references = [""]
         self.updateDict()
 
-    def setLinks(self, links=[]]):
+    def setLinks(self, links=[]):
         self.links = links
         if len(self.links)==0:
             self.links = [""]

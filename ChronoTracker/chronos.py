@@ -20,6 +20,9 @@ class Event(object):
         self.year = time.strftime("%Y", timeNow)
         self.month = time.strftime("%m", timeNow)
         self.day = time.strftime("%d", timeNow)
+        self.hour = time.strftime("%H", timeNow)
+        self.minute = time.strftime("%M", timeNow)
+        self.second = time.strftime("%S", timeNow)
         self.date = self.day+"."+self.month+"."+self.year
         self.setDate(self.date)
         # Set Information
@@ -31,9 +34,8 @@ class Event(object):
 
     def setDate(self, date):
         # Default values
-        self.year = "0000"
-        self.month = "00"
-        self.day = "00"
+        self.year, self.month, self.day = "0000", "00", "00"
+        self.hour, self.minute, self.second = "00", "00", "00"
         self.dateID = date
         if "." in date:
             dateElems = date.split(".")
@@ -52,7 +54,6 @@ class Event(object):
             self.day   = self.dateID[6:8]
         self.date = self.day+"."+self.month+"."+self.year
         self.dateID = str(date2unix(self.date))
-        print self.dateID
 
     def setDescription(self, description=None):
         self.description = description
@@ -66,14 +67,17 @@ class Event(object):
             self.references = [""]
         self.updateDict()
 
-    def setLinks(self, links=None):
+    def setLinks(self, links=[]]):
         self.links = links
-        if self.links == None or len(self.links)==0:
+        if len(self.links)==0:
             self.links = [""]
         self.updateDict()
 
     def buildDict(self):
-        self.d = {self.dateID:{self.date:{"year":self.year,"month":self.month,"day":self.day},"description":self.description,"references":self.references,"links":self.links}}
+        self.d = {self.dateID:{
+                      self.date:{"year":self.year,"month":self.month,"day":self.day,\
+                      "hour":self.hour, "minute":self.minute, "second":self.second },\
+                      "description":self.description,"references":self.references,"links":self.links } }
         return self.d
 
     def updateDict(self):
@@ -82,6 +86,9 @@ class Event(object):
         self.d[self.dateID][self.date]["day"] = self.day
         self.d[self.dateID][self.date]["month"] = self.month
         self.d[self.dateID][self.date]["year"] = self.year
+        self.d[self.dateID][self.date]["hour"] = self.hour
+        self.d[self.dateID][self.date]["minute"] = self.minute
+        self.d[self.dateID][self.date]["second"] = self.second
         self.d[self.dateID]["description"] = self.description
         self.d[self.dateID]["links"] = self.links
         self.d[self.dateID]["references"] = self.references
@@ -90,7 +97,7 @@ class Event(object):
         with open(fileName, 'w') as jsonFile:
             json.dump(self.d, jsonFile)
 
-    def printDict(self):
+    def printJson(self):
         print json.dumps(self.d, sort_keys=True, indent=4)
 
 
@@ -148,5 +155,5 @@ new_event.setReferences(["ref1", "ref2"])
 new_event.setLinks(["link1","link2"])
 new_event.saveEvent("output.txt")
 
-new_event.printDict()
+new_event.printJson()
 printInfo(new_event)

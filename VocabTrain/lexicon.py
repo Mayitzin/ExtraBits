@@ -9,6 +9,26 @@ import json
 from datetime import datetime
 
 
+class Word:
+    kind = 'word'
+
+    def __init__(self, word):
+        self.word = word
+        self.translations = {}
+
+    def add_translation(self, translation):
+        self.translations.update(translation)
+
+    def available_translations(self):
+        return list(self.translations.keys())
+
+    def toDict(self):
+        d = {"word" : self.word}
+        d.update({"translations" : self.translations})
+        return d
+
+
+
 def saveData(data, fileName="output.txt"):
     # Save to a file
     with open(fileName, 'a') as outfile:
@@ -30,13 +50,22 @@ def newEntry():
     d = {t: {'bar': ('baz', None, 1.0, 2)}}
     return d
 
-dic_EN_GE = {"label1":"label"}
 
-d = newEntry()
 
-# Compact encoding
-data_line = json.dumps(d, sort_keys=True, separators=(',',':')) + "\n"
+haus = Word("Haus")
+haus.add_translation({"es_mx":"casa"})
+haus.add_translation({"en_us":"house"})
+print("Available translations:", haus.available_translations())
+d = haus.toDict()
+print(d)
+d_01 = {"es_mx":"chante"}
+haus.add_translation(d_01)
+print(d)
 
-# Save to a file
-saveData(data_line, "output.txt")
-readData("output.txt", printOut=True)
+
+# d = newEntry()
+# # Compact encoding
+# data_line = json.dumps(d, sort_keys=True, separators=(',',':')) + "\n"
+# # Save to a file
+# saveData(data_line, "output.txt")
+# readData("output.txt", printOut=True)
